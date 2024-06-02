@@ -19,24 +19,42 @@ export default function TextForm(props) {
   return (
     <>
       <div className="container">
-        <h1>{props.heading}</h1>
+        <h1 className={`text-${props.mode === "dark" ? "light" : "dark"}`}>
+          {props.heading}
+        </h1>
         <div className="mb-3">
           <textarea
-            className="form-control"
+            className={`form-control text-${
+              props.mode === "dark" ? "light" : "dark"
+            } bg-${props.mode === "light" ? "light" : "dark "}`}
             value={text}
             id="my-box"
             rows="8"
             onChange={handleOnChange}
           ></textarea>
         </div>
-        <button className="btn btn-primary" onClick={handleUpClick}>
+        <button
+          className={`btn btn-primary text-${
+            props.mode === "dark" ? "light" : "dark"
+          }`}
+          onClick={handleUpClick}
+        >
           Convert to upper case
         </button>
-        <button className="btn btn-primary mx-4" onClick={handleLoClick}>
+        <button
+          className={`mx-4 btn btn-primary text-${
+            props.mode === "dark" ? "light" : "dark"
+          }`}
+          onClick={handleLoClick}
+        >
           Convert to lower case
         </button>
       </div>
-      <div className="container my-3">
+      <div
+        className={`container my-3 text-${
+          props.mode === "dark" ? "light" : "dark"
+        }`}
+      >
         <h1>Your text summary</h1>
         <p>
           {text.split(" ").length} words and {text.length} characters

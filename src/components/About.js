@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-export default function About() {
+export default function About(props) {
   const [myStyle, setMyStyle] = useState({
-    color: "white",
-    backgroundColor: "black",
+    color: "black",
+    backgroundColor: "white",
   });
   const [btnText, setBtnText] = useState("Enable light mode");
 
   let toggleStyle = () => {
-    if (myStyle.color === "white") {
+    if ((props.mode = "light")) {
       setMyStyle({
         color: "black",
         backgroundColor: "white",

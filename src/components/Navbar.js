@@ -2,7 +2,9 @@ import React from "react";
 
 export default function Navbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav
+      className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+    >
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           {props.title}
@@ -31,17 +33,23 @@ export default function Navbar(props) {
               </a>
             </li>
           </ul>
-          <form className="d-flex" role="search">
+          <div className="form-check form-switch mx-5 my-2">
             <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
+              className="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+              onClick={props.toggleMode}
             />
-            <button className="btn btn-outline-primary" type="submit">
-              Search
-            </button>
-          </form>
+            <label
+              className={`form-check-label text-${
+                props.mode === "dark" ? "light" : "dark"
+              }`}
+              htmlFor="flexSwitchCheckDefault"
+            >
+              Enable light mode
+            </label>
+          </div>
         </div>
       </div>
     </nav>
