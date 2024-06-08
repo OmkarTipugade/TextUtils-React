@@ -5,10 +5,10 @@ export default function About(props) {
     color: "black",
     backgroundColor: "white",
   });
-  const [btnText, setBtnText] = useState("Enable light mode");
+  const [btnText, setBtnText] = useState("Enable dark mode");
 
   let toggleStyle = () => {
-    if ((props.mode = "light")) {
+    if (myStyle.color === "white") {
       setMyStyle({
         color: "black",
         backgroundColor: "white",
@@ -118,7 +118,7 @@ export default function About(props) {
                 showing and hiding via CSS transitions. You can modify any of
                 this with custom CSS or overriding our default variables. It's
                 also worth noting that just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
+                <code>accordion-body</code>, though the transition does limit
                 overflow.
               </div>
             </div>
@@ -126,7 +126,7 @@ export default function About(props) {
         </div>
       </div>
       <div className="container my-3">
-        <button className="btn btn-primary" onClick={toggleStyle}>
+        <button type="button" className="btn btn-primary" onClick={toggleStyle}>
           {btnText}
         </button>
       </div>

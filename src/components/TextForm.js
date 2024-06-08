@@ -1,6 +1,24 @@
 import React, { useState } from "react";
 
 export default function TextForm(props) {
+  const [text, setText] = useState("");
+  const [wordCount, setWordCount] = useState(0);
+
+  const handleChange = (event) => {
+    const inputText = event.target.value;
+    setText(inputText);
+    setWordCount(countWords(inputText));
+  };
+
+  const countWords = (inputText) => {
+    const trimmedText = inputText.trim();
+
+    const words = trimmedText.split(/\s+/);
+
+    const filteredWords = words.filter((word) => word.length > 0);
+
+    return filteredWords.length;
+  };
   const handleUpClick = () => {
     // console.log("upper case was clicked" + text);
     let newText = text.toUpperCase();
@@ -11,11 +29,7 @@ export default function TextForm(props) {
     let newText = text.toLowerCase();
     setText(newText);
   };
-  const handleOnChange = (e) => {
-    console.log("on Change");
-    setText(e.target.value);
-  };
-  const [text, setText] = useState("Enter text here");
+
   return (
     <>
       <div className="container">
@@ -30,7 +44,7 @@ export default function TextForm(props) {
             value={text}
             id="my-box"
             rows="8"
-            onChange={handleOnChange}
+            onChange={handleChange}
           ></textarea>
         </div>
         <button
@@ -57,7 +71,7 @@ export default function TextForm(props) {
       >
         <h1>Your text summary</h1>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          {wordCount} words and {text.length} characters
         </p>
         <p>{0.008 * text.split(" ").length} Minutes required to read</p>
         <h2>Preview</h2>
